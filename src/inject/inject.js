@@ -1,3 +1,6 @@
+ACTIVITY_WINDOW_WEEKS = 4;
+TIME_RETRY_STATS_MS = 250;
+
 loadActivity = function() {
 	$.ajax({
 		dataType: 'json',
@@ -6,12 +9,11 @@ loadActivity = function() {
 			200: function(data) {
 				var activity = computeActivity(data);
 				var activityLabel = getActivityLabel(activity);
-				console.log(getProjectPath() + ": "+activity);
 				displayActivity(activityLabel, activity);
 			},
 			202: function() {
 				// github processing the data
-				setTimeout(loadActivity, 250)
+				setTimeout(loadActivity, TIME_RETRY_STATS_MS)
 			},
 			403: function() {
 				console.warn('GitHub API limit reached!');
@@ -25,7 +27,7 @@ loadActivity = function() {
 }
 
 displayActivity = function(label, number) {
-	var hint = number + ' commits in the past year';
+	var hint = number + ' commits in the past ' + ACTIVITY_WINDOW_WEEKS + ' weeks';
 
 	if(!$('.activity').size()) {
 		var html = '<li class="activity"><a data-pjax="" href="' + getProjectPath() + '/graphs/commit-activity" title="' + hint + '">';
@@ -43,6 +45,8 @@ displayActivity = function(label, number) {
 computeActivity = function(data) {
 	return _(data)
 		.mapValues(function(week) {return week.total})
+		.values()
+		.slice(52 - ACTIVITY_WINDOW_WEEKS)
 		.reduce(function(a, b) {return a + b}, 0);
 }
 
