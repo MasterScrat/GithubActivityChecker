@@ -1,0 +1,28 @@
+{
+  "name": "Github Activity Checker",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Checks the activity level of GitHub projects",
+  "homepage_url": "http://lumakey.net/",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "https://github.com/*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*/*",
+        "http://github.com/*/*"
+      ],
+      "js": [
+        "js/jquery.min.js",
+        "js/lodash.min.js",
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
