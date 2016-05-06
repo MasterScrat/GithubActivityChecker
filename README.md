@@ -1,8 +1,8 @@
 # GithubActivityChecker
 
-[This Google Chrome extension adds a clear activity indicator when browsing GitHub project pages.
+[This Google Chrome extension adds a clear activity indicator when browsing GitHub project pages.](https://chrome.google.com/webstore/detail/github-activity-checker/agebcpekpbkaibjghgakombjjkefmcol)
 
-![Github Activity Checker Screenshot](https://raw.githubusercontent.com/MasterScrat/GithubActivityChecker/master/screenshot.png)](https://chrome.google.com/webstore/detail/github-activity-checker/agebcpekpbkaibjghgakombjjkefmcol)
+![Github Activity Checker Screenshot](https://raw.githubusercontent.com/MasterScrat/GithubActivityChecker/master/screenshot.png)
 
 
 It's often unclear when looking at a GitHub project how much *recent activity* has occurred. 
